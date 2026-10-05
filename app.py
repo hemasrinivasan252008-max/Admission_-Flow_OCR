@@ -57,17 +57,17 @@ st.markdown("""
 
 weekly_schedule = {
 
-    "Monday": "Subashini",
+    "Monday": "Pooja",
 
-    "Tuesday": "Megala",
+    "Tuesday": "Hema",
 
-    "Wednesday": "Subashini",
+    "Wednesday": "Pooja",
 
-    "Thursday": "Anusha",
+    "Thursday": "Vaishnavi",
 
-    "Friday": "Megala",
+    "Friday": "Hema",
 
-    "Saturday": "Vijitha"
+    "Saturday": "Shiny"
 }
 
 
@@ -77,13 +77,13 @@ weekly_schedule = {
 
 counter_map = {
 
-    "Subashini": 1,
+    "Pooja": 1,
 
-    "Megala": 2,
+    "Hema`": 2,
 
-    "Anusha": 3,
+    "Vaishnavi": 3,
 
-    "Vijitha": 4
+    "Shiny": 4
 }
 
 
@@ -1145,13 +1145,13 @@ elif st.session_state.role == "Admin":
 
     counter_data = {
 
-        1: "Subashini",
+        1: "Pooja",
 
-        2: "Megala",
+        2: "Hema",
 
-        3: "Anusha",
+        3: "Vaishnavi",
 
-        4: "Vijitha"
+        4: "Shiny"
     }
 
 
