@@ -5,44 +5,25 @@ import shutil
 from PIL import Image, ImageOps
 
 
-# =========================================================
-# TESSERACT CONFIGURATION
-# =========================================================
+# Find Tesseract automatically
+tesseract_path = shutil.which("tesseract")
 
-# Windows
-windows_tesseract = (
-    r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-)
-
-# Check Windows installation
-if shutil.which("tesseract"):
-
-    pytesseract.pytesseract.tesseract_cmd = (
-        shutil.which("tesseract")
-    )
-
+if tesseract_path:
+    pytesseract.pytesseract.tesseract_cmd = tesseract_path
 else:
-
     pytesseract.pytesseract.tesseract_cmd = (
-        windows_tesseract
+        r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     )
 
-
-# =========================================================
-# OCR TEXT EXTRACTION
-# =========================================================
 
 def extract_text(image_file):
 
     image = Image.open(image_file)
 
-    # Convert to grayscale
     image = image.convert("L")
 
-    # Improve contrast
     image = ImageOps.autocontrast(image)
 
-    # Increase image size
     image = image.resize(
         (
             image.width * 2,
@@ -50,7 +31,6 @@ def extract_text(image_file):
         )
     )
 
-    # OCR
     text = pytesseract.image_to_string(
         image,
         config="--psm 3"
@@ -59,15 +39,10 @@ def extract_text(image_file):
     return text
 
 
-# =========================================================
-# MARKSHEET DETAILS
-# =========================================================
-
 def extract_marksheet_details(text):
 
     details = {}
 
-    # Date of Birth
     dob_match = re.search(
         r"DATE OF BIRTH.*?(\d{2}/\d{2}/\d{4})",
         text,
@@ -75,12 +50,8 @@ def extract_marksheet_details(text):
     )
 
     if dob_match:
+        details["date_of_birth"] = dob_match.group(1)
 
-        details["date_of_birth"] = (
-            dob_match.group(1)
-        )
-
-    # Permanent Register Number
     reg_match = re.search(
         r"PERMANENT REGISTER NUMBER.*?(\d{10})",
         text,
@@ -88,9 +59,6 @@ def extract_marksheet_details(text):
     )
 
     if reg_match:
-
-        details["register_number"] = (
-            reg_match.group(1)
-        )
+        details["register_number"] = reg_match.group(1)
 
     return details
