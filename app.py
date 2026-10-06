@@ -79,7 +79,7 @@ counter_map = {
 
     "Pooja": 1,
 
-    "Hema`": 2,
+    "Hema": 2,
 
     "Vaishnavi": 3,
 
