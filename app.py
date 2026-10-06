@@ -61,13 +61,13 @@ weekly_schedule = {
 
     "Tuesday": "Hema",
 
-    "Wednesday": "Pooja",
+    "Wednesday": "Vaishnavi",
 
-    "Thursday": "Vaishnavi",
+    "Thursday": "Shiny",
 
-    "Friday": "Hema",
+    "Friday": "Pooja",
 
-    "Saturday": "Shiny"
+    "Saturday": "Hema"
 }
 
 
