@@ -1,19 +1,13 @@
 import pytesseract
 import re
-import shutil
 
 from PIL import Image, ImageOps
 
 
-# Find Tesseract automatically
-tesseract_path = shutil.which("tesseract")
-
-if tesseract_path:
-    pytesseract.pytesseract.tesseract_cmd = tesseract_path
-else:
-    pytesseract.pytesseract.tesseract_cmd = (
-        r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-    )
+# Set Tesseract path
+pytesseract.pytesseract.tesseract_cmd = (
+    r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+)
 
 
 def extract_text(image_file):
