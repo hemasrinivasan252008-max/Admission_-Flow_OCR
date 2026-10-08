@@ -61,5 +61,4 @@ def extract_marksheet_details(text):
     if reg_match: 
         details["register_number"] = reg_match.group(1) 
  
-    return details  convert this code to above 
-instruction
+    return details 
