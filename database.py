@@ -1,21 +1,8 @@
 import sqlite3
-
-
 DB_NAME = "admission.db"
-
-
-# =========================================================
-# DATABASE CONNECTION
-# =========================================================
 
 def create_connection():
     return sqlite3.connect(DB_NAME)
-
-
-# =========================================================
-# CREATE / MIGRATE STUDENT TABLE
-# =========================================================
-
 def create_student_table():
 
     conn = create_connection()
@@ -126,11 +113,6 @@ def create_student_table():
     conn.commit()
     conn.close()
 
-
-# =========================================================
-# ADD STUDENT
-# =========================================================
-
 def add_student(
     name,
     dob,
@@ -179,11 +161,6 @@ def add_student(
     conn.close()
 
     return student_id
-
-
-# =========================================================
-# GET ALL STUDENTS
-# =========================================================
 
 def get_students():
 
@@ -234,10 +211,6 @@ def get_students():
     return students
 
 
-# =========================================================
-# VERIFY DOCUMENTS
-# =========================================================
-
 def verify_documents(student_id):
 
     conn = create_connection()
@@ -256,10 +229,6 @@ def verify_documents(student_id):
     conn.commit()
     conn.close()
 
-
-# =========================================================
-# NEXT QUEUE POSITION
-# =========================================================
 
 def get_next_queue_position():
 
@@ -280,10 +249,6 @@ def get_next_queue_position():
 
     return max_position + 1
 
-
-# =========================================================
-# UPDATE TOKEN
-# =========================================================
 
 def update_token(
     student_id,
@@ -327,10 +292,6 @@ def update_token(
     conn.close()
 
 
-# =========================================================
-# UPDATE QUEUE STATUS
-# =========================================================
-
 def update_queue_status(student_id, status):
 
     conn = create_connection()
@@ -346,12 +307,6 @@ def update_queue_status(student_id, status):
 
     conn.commit()
     conn.close()
-
-
-# =========================================================
-# UPDATE FEES
-# =========================================================
-
 def update_fees(student_id, fees_status, payment_mode):
 
     conn = create_connection()
@@ -387,12 +342,6 @@ def update_fees(student_id, fees_status, payment_mode):
 
     conn.commit()
     conn.close()
-
-
-# =========================================================
-# COMPLETE ADMISSION
-# =========================================================
-
 def complete_admission(student_id):
 
     conn = create_connection()
@@ -412,11 +361,6 @@ def complete_admission(student_id):
 
     conn.commit()
     conn.close()
-
-
-# =========================================================
-# DATABASE INITIALIZATION
-# =========================================================
 
 create_student_table()
 
